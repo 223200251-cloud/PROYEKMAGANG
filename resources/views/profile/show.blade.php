@@ -366,9 +366,13 @@
 
                 <h1 class="profile-name">{{ $user->name }}</h1>
                 
-                @if($user->username)
-                    <p class="profile-username">@{{ $user->username }}</p>
-                @endif
+                <p class="profile-username" style="font-weight: 500; font-size: 1.1rem;">
+                    @if($user->user_type === 'individual')
+                        <i class="fas fa-user-circle" style="color: #0077B6;"></i> Kreator Portfolio
+                    @else
+                        <i class="fas fa-building" style="color: #06D6A0;"></i> Perusahaan / Rekruter
+                    @endif
+                </p>
 
                 @if($user->bio)
                     <p class="profile-bio">{{ $user->bio }}</p>
@@ -513,21 +517,6 @@
                     </div>
                 @endif
 
-                <!-- Username -->
-                @if($user->username)
-                    <div class="col-md-6">
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-at"></i>
-                            </div>
-                            <div class="contact-info">
-                                <div class="contact-label">Username</div>
-                                <div class="contact-value">@{{ $user->username }}</div>
-                            </div>
-                        </div>
-                    </div>
-                @endif
-
                 <!-- Website -->
                 @if($user->website || $user->company_website)
                     <div class="col-md-6">
@@ -592,8 +581,8 @@
                         <article class="portfolio-card">
                             <!-- Image Section -->
                             <div class="portfolio-image">
-                                @if($portfolio->image_url)
-                                    <img src="{{ $portfolio->image_url }}" alt="{{ $portfolio->title }}" loading="lazy">
+                                @if($portfolio->image)
+                                    <img src="{{ $portfolio->image }}" alt="{{ $portfolio->title }}" loading="lazy">
                                 @else
                                     <div class="placeholder">
                                         <i class="fas fa-image"></i>
@@ -683,7 +672,7 @@
                     <h3>Belum ada portfolio</h3>
                     <p>{{ $user->name }} belum menambahkan portfolio</p>
                     @auth
-                        @if(Auth::id() === $user->id)
+                        @if(Auth::id() === $user->id && Auth::user()->isCreator())
                             <a href="{{ route('portfolio.create') }}" class="btn btn-primary btn-lg">
                                 <i class="fas fa-plus"></i> Buat Portfolio
                             </a>
@@ -702,7 +691,7 @@
             const btn = document.querySelector(`[data-save-profile="${creatorId}"]`);
             const textEl = document.getElementById(`save-text-${creatorId}`);
             
-            fetch(`/profile/${creatorId}/save`, {
+            fetch(`/company/save-creator/${creatorId}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

@@ -47,7 +47,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/company/contact-creator/{creator}', [CompanyController::class, 'contactCreator'])->name('company.contact-creator');
 
     // Chat Routes
-    Route::get('/chat/messages/{recipientId}', [ChatController::class, 'getMessages'])->name('chat.messages');
+    Route::get('/chat/{recipientId}', [ChatController::class, 'show'])->name('chat.messages');
+    Route::get('/chat/api/messages/{recipientId}', [ChatController::class, 'getMessages'])->name('chat.api.messages');
     Route::post('/chat/send', [ChatController::class, 'sendMessage'])->name('chat.send');
     Route::get('/chat/conversations', [ChatController::class, 'conversations'])->name('chat.conversations');
     Route::delete('/chat/message/{messageId}', [ChatController::class, 'deleteMessage'])->name('chat.delete');

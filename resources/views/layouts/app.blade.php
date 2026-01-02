@@ -588,7 +588,7 @@
                             <a href="{{ route('admin.dashboard') }}" class="btn btn-warning btn-sm">
                                 <i class="fas fa-cogs"></i> Admin Panel
                             </a>
-                        @else
+                        @elseif(Auth::user()->isCreator())
                             <a href="{{ route('portfolio.create') }}" class="btn btn-outline-light btn-sm">
                                 <i class="fas fa-plus"></i> Buat Portfolio
                             </a>

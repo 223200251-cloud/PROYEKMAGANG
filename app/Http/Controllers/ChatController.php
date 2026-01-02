@@ -10,6 +10,29 @@ use Illuminate\Support\Facades\Auth;
 class ChatController extends Controller
 {
     /**
+     * Show chat page with a specific user
+     */
+    public function show($recipientId)
+    {
+        $currentUser = Auth::user();
+
+        // Only companies/recruiters can use chat
+        if ($currentUser->user_type === 'individual') {
+            return redirect()->route('home')->with('error', 'Kreator tidak dapat menggunakan fitur chat. Hanya recruiter/perusahaan yang dapat menghubungi kreator.');
+        }
+
+        // Find the recipient
+        $recipient = User::findOrFail($recipientId);
+
+        // Recipient must be a creator (individual)
+        if ($recipient->user_type !== 'individual') {
+            return redirect()->route('home')->with('error', 'Anda hanya dapat menghubungi kreator.');
+        }
+
+        return view('chat.show', compact('recipient'));
+    }
+
+    /**
      * Get all messages between current user and a specific user
      */
     public function getMessages($recipientId)
@@ -52,6 +75,19 @@ class ChatController extends Controller
      */
     public function sendMessage(Request $request)
     {
+        $currentUser = Auth::user();
+
+        // Cek apakah user adalah kreator (individual)
+        if ($currentUser->user_type === 'individual') {
+            return response()->json([
+                'success' => false,
+                'message' => 'Kreator tidak diizinkan mengirim pesan chat'
+            ], 403);
+        }
+
+        // Cek authorization menggunakan policy
+        $this->authorize('create', Chat::class);
+
         $request->validate([
             'recipient_id' => 'required|exists:users,id',
             'message' => 'required|string|max:1000'
@@ -86,6 +122,18 @@ class ChatController extends Controller
      */
     public function conversations()
     {
+        $currentUser = Auth::user();
+
+        // Kreator tidak bisa melihat conversations
+        if ($currentUser->user_type === 'individual') {
+            return response()->json([
+                'success' => false,
+                'message' => 'Kreator tidak diizinkan mengakses pesan chat'
+            ], 403);
+        }
+
+        $this->authorize('viewAny', Chat::class);
+
         $currentUserId = Auth::id();
 
         // Get latest message with each user

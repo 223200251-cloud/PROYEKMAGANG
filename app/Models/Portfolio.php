@@ -15,6 +15,8 @@ class Portfolio extends Model
         'description',
         'category',
         'image_url',
+        'image_type',
+        'image_path',
         'project_url',
         'technologies',
         'views',
@@ -53,5 +55,30 @@ class Portfolio extends Model
     public function liked($userId)
     {
         return $this->likes()->where('user_id', $userId)->exists();
+    }
+
+    /**
+     * Get the image URL (either from uploaded file or image_url)
+     */
+    public function getImageAttribute()
+    {
+        if ($this->image_type === 'uploaded' && $this->image_path) {
+            return asset('storage/' . $this->image_path);
+        }
+        return $this->image_url;
+    }
+
+    /**
+     * Delete image file when deleting portfolio
+     */
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($portfolio) {
+            if ($portfolio->image_type === 'uploaded' && $portfolio->image_path) {
+                \Illuminate\Support\Facades\Storage::disk('public')->delete($portfolio->image_path);
+            }
+        });
     }
 }

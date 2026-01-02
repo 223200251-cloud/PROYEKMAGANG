@@ -24,9 +24,13 @@
 
                     <div class="col-md-9">
                         <h1 class="mb-2">{{ $user->name }}</h1>
-                        @if($user->username)
-                            <p class="text-muted mb-3">@{{ $user->username }}</p>
-                        @endif
+                        <p class="text-muted mb-3" style="font-size: 1.1rem; font-weight: 500;">
+                            @if($user->user_type === 'individual')
+                                <i class="fas fa-user-circle" style="color: #0077B6;"></i> Kreator Portfolio
+                            @else
+                                <i class="fas fa-building" style="color: #06D6A0;"></i> Perusahaan / Rekruter
+                            @endif
+                        </p>
 
                         @if($user->bio)
                             <p class="lead mb-3">{{ $user->bio }}</p>
@@ -58,7 +62,8 @@
             </div>
         </div>
 
-        <!-- Stats Section -->
+        <!-- Stats Section - Only for Creators -->
+        @if($user->user_type === 'individual')
         <div class="row mb-5">
             <div class="col-sm-6 col-lg-3 mb-3 mb-lg-0">
                 <div class="card text-center h-100" style="border-left: 4px solid #0077B6;">
@@ -93,8 +98,10 @@
                 </div>
             </div>
         </div>
+        @endif
 
-        <!-- Portfolio Section -->
+        <!-- Portfolio Section - For Creators -->
+        @if($user->user_type === 'individual')
         <div>
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <h2 class="mb-0">
@@ -110,8 +117,8 @@
                     @foreach($portfolios as $portfolio)
                         <div class="col-12 col-md-6 col-lg-4">
                             <div class="card portfolio-card h-100 position-relative">
-                                @if($portfolio->image_url)
-                                    <img src="{{ $portfolio->image_url }}" alt="{{ $portfolio->title }}" 
+                                @if($portfolio->image)
+                                    <img src="{{ $portfolio->image }}" alt="{{ $portfolio->title }}" 
                                          class="card-img-top">
                                 @else
                                     <div class="card-img-top d-flex align-items-center justify-content-center">
@@ -218,6 +225,121 @@
                 </div>
             @endif
         </div>
+        @endif
+
+        <!-- Saved Creators Section - For Recruiters/Companies -->
+        @if($user->user_type === 'company')
+        <div>
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2 class="mb-0">
+                    <i class="fas fa-bookmark"></i> Kandidat Tersimpan
+                </h2>
+                <a href="{{ route('home') }}" class="btn btn-primary">
+                    <i class="fas fa-search"></i> Jelajahi Kreator
+                </a>
+            </div>
+
+            @php
+                $savedCreators = \App\Models\SavedCreator::where('company_id', $user->id)
+                    ->with('creator')
+                    ->paginate(12);
+            @endphp
+
+            @if($savedCreators->count() > 0)
+                <div class="row g-4 mb-4">
+                    @foreach($savedCreators as $item)
+                        @php $creator = $item->creator; @endphp
+                        <div class="col-12 col-md-6 col-lg-4">
+                            <div class="card h-100" style="border-top: 3px solid #06D6A0; transition: all 0.3s ease;">
+                                <!-- Creator Header -->
+                                <div style="background: linear-gradient(135deg, #06D6A0, #00BFA5); padding: 1.5rem; color: white;">
+                                    <div class="d-flex align-items-center gap-3 mb-3">
+                                        @if($creator->avatar_url)
+                                            <img src="{{ $creator->avatar_url }}" alt="{{ $creator->name }}" 
+                                                 style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover; border: 2px solid white;">
+                                        @else
+                                            <div style="width: 50px; height: 50px; border-radius: 50%; background: rgba(255,255,255,0.3); display: flex; align-items: center; justify-content: center; font-weight: bold;">
+                                                {{ strtoupper(substr($creator->name, 0, 1)) }}
+                                            </div>
+                                        @endif
+                                        <div>
+                                            <h5 class="mb-0">{{ $creator->name }}</h5>
+                                            <small>Kreator Portfolio</small>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Creator Info -->
+                                <div class="card-body">
+                                    @if($creator->bio)
+                                        <p class="text-muted small mb-3">{{ Str::limit($creator->bio, 100) }}</p>
+                                    @endif
+
+                                    <!-- Creator Stats -->
+                                    <div class="row text-center mb-3">
+                                        <div class="col-6" style="border-right: 1px solid #eee; padding: 0.5rem 0;">
+                                            <div style="font-size: 1.5rem; font-weight: bold; color: #0077B6;">
+                                                {{ $creator->portfolios()->count() }}
+                                            </div>
+                                            <small class="text-muted">Portfolio</small>
+                                        </div>
+                                        <div class="col-6" style="padding: 0.5rem 0;">
+                                            <div style="font-size: 1.5rem; font-weight: bold; color: #00B4D8;">
+                                                {{ $creator->portfolios()->sum('views') }}
+                                            </div>
+                                            <small class="text-muted">Views</small>
+                                        </div>
+                                    </div>
+
+                                    @if($creator->location)
+                                        <p class="small mb-2">
+                                            <i class="fas fa-map-marker-alt text-muted"></i> {{ $creator->location }}
+                                        </p>
+                                    @endif
+
+                                    @if($creator->website)
+                                        <p class="small mb-2">
+                                            <i class="fas fa-globe text-muted"></i> 
+                                            <a href="{{ $creator->website }}" target="_blank">Website</a>
+                                        </p>
+                                    @endif
+                                </div>
+
+                                <!-- Actions -->
+                                <div class="card-footer bg-light" style="border-top: 1px solid #eee; padding: 1rem;">
+                                    <div class="d-grid gap-2">
+                                        <a href="{{ route('profile.show', $creator) }}" class="btn btn-outline-primary btn-sm">
+                                            <i class="fas fa-user-circle"></i> Lihat Profil
+                                        </a>
+                                        <a href="{{ route('chat.messages', $creator->id) }}" class="btn btn-success btn-sm">
+                                            <i class="fas fa-comments"></i> Hubungi
+                                        </a>
+                                        <button onclick="removeSavedCreator({{ $creator->id }})" class="btn btn-danger btn-sm">
+                                            <i class="fas fa-trash"></i> Hapus
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+
+                <!-- Pagination -->
+                <div class="d-flex justify-content-center mt-5">
+                    {{ $savedCreators->links('pagination::bootstrap-5') }}
+                </div>
+            @else
+                <div class="alert alert-info text-center py-5" style="border-radius: 10px;">
+                    <i class="fas fa-inbox fa-3x mb-3" style="color: #06D6A0;"></i>
+                    <p class="mt-3" style="font-size: 1.1rem;">Belum ada kandidat yang disimpan</p>
+                    <p class="text-muted mb-3">Temukan kreator terbaik dan simpan untuk referensi masa depan</p>
+                    <a href="{{ route('home') }}" class="btn btn-primary">
+                        <i class="fas fa-search"></i> Mulai Jelajahi Kreator
+                    </a>
+                </div>
+            @endif
+        </div>
+        @endif
     </div>
 
     <!-- Delete Form (Hidden) -->
@@ -232,6 +354,31 @@
                 const form = document.getElementById('deleteForm');
                 form.action = `/portfolio/${portfolioId}`;
                 form.submit();
+            }
+        }
+
+        function removeSavedCreator(creatorId) {
+            if (confirm('Apakah Anda yakin ingin menghapus kreator ini dari daftar tersimpan?')) {
+                const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+                
+                fetch(`/company/save-creator/${creatorId}`, {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRF-TOKEN': csrfToken,
+                        'Content-Type': 'application/json'
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.saved === false) {
+                        alert('Kreator berhasil dihapus dari daftar tersimpan');
+                        location.reload();
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Gagal menghapus kreator');
+                });
             }
         }
     </script>

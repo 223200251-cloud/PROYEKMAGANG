@@ -74,7 +74,7 @@
                                 @error('username')
                                     <div class="invalid-feedback d-block">{{ $message }}</div>
                                 @enderror
-                                <small class="form-text text-muted">Username unik untuk profile user</small>
+                                <small class="form-text text-muted">Identitas unik pengguna (contoh: andiwijaya). Jika dikosongkan, pengguna hanya bisa diakses melalui email</small>
                             </div>
 
                             <!-- Avatar URL -->

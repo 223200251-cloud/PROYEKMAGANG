@@ -24,32 +24,29 @@
 
         /* Creator Profile Card */
         .creator-profile-card {
-            background: linear-gradient(135deg, rgba(37, 99, 235, 0.05), rgba(59, 130, 246, 0.03));
-            border: 1px solid rgba(37, 99, 235, 0.1);
-            border-radius: 16px;
-            padding: 2rem;
+            background: white;
+            border: 1px solid var(--gray-200);
+            border-radius: 12px;
+            padding: 1.5rem;
             transition: all 0.3s ease;
-            cursor: pointer;
         }
 
         .creator-profile-card:hover {
-            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(59, 130, 246, 0.08));
-            border-color: rgba(37, 99, 235, 0.2);
-            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.1);
-            transform: translateY(-4px);
+            border-color: var(--primary-color);
+            box-shadow: 0 4px 16px rgba(37, 99, 235, 0.1);
         }
 
         .creator-avatar {
-            width: 80px;
-            height: 80px;
-            border-radius: 12px;
+            width: 60px;
+            height: 60px;
+            border-radius: 10px;
             background: linear-gradient(135deg, var(--primary-color), rgba(59, 130, 246, 0.9));
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-weight: 800;
-            font-size: 2rem;
+            font-weight: 700;
+            font-size: 1.8rem;
             flex-shrink: 0;
         }
 
@@ -58,41 +55,34 @@
         }
 
         .creator-name {
-            font-size: 1.4rem;
+            font-size: 1.2rem;
             font-weight: 700;
             color: var(--dark-color);
-            margin-bottom: 0.25rem;
+            margin-bottom: 0.3rem;
             font-family: 'Poppins', sans-serif;
-        }
-
-        .creator-username {
-            color: var(--gray-600);
-            font-size: 0.95rem;
-            margin-bottom: 0.5rem;
         }
 
         .creator-bio {
             color: var(--gray-600);
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             line-height: 1.5;
-            margin-bottom: 1rem;
+            margin-bottom: 0.8rem;
         }
 
         .creator-role-badge {
             display: inline-block;
-            background: rgba(37, 99, 235, 0.15);
+            background: rgba(37, 99, 235, 0.1);
             color: var(--primary-color);
-            padding: 0.35rem 0.85rem;
+            padding: 0.3rem 0.75rem;
             border-radius: 6px;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             font-weight: 600;
             text-transform: capitalize;
-            margin-bottom: 1rem;
         }
 
         .creator-actions {
             display: flex;
-            gap: 1rem;
+            gap: 0.75rem;
             flex-wrap: wrap;
             align-items: center;
         }
@@ -294,17 +284,18 @@
 
         /* Portfolio Header */
         .portfolio-header {
-            position: relative;
+            background: white;
+            border-radius: 12px;
             overflow: hidden;
-            border-radius: 16px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-            margin-bottom: 3rem;
+            border: 1px solid var(--gray-200);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            margin-bottom: 2.5rem;
         }
 
         .portfolio-image-container {
             position: relative;
-            height: 400px;
-            background: linear-gradient(135deg, rgba(226, 232, 240, 0.8), rgba(241, 245, 249, 0.8));
+            height: 350px;
+            background: linear-gradient(135deg, rgba(226, 232, 240, 0.5), rgba(241, 245, 249, 0.5));
             overflow: hidden;
         }
 
@@ -312,34 +303,33 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.4s ease;
+            transition: transform 0.3s ease;
         }
 
         .portfolio-image-container:hover img {
-            transform: scale(1.02);
+            transform: scale(1.01);
         }
 
         .portfolio-info {
             background: white;
-            padding: 2rem;
-            position: relative;
+            padding: 1.75rem;
         }
 
         .portfolio-badges {
             display: flex;
-            gap: 0.75rem;
+            gap: 0.6rem;
             flex-wrap: wrap;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.25rem;
         }
 
         .portfolio-badge {
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            font-size: 0.8rem;
+            padding: 0.35rem 0.75rem;
+            border-radius: 6px;
+            font-size: 0.75rem;
             font-weight: 600;
             display: inline-flex;
             align-items: center;
-            gap: 0.4rem;
+            gap: 0.3rem;
         }
 
         .badge-category {
@@ -353,26 +343,27 @@
         }
 
         .badge-highlight {
-            background: linear-gradient(135deg, rgba(251, 146, 60, 0.15), rgba(239, 68, 68, 0.15));
+            background: rgba(251, 146, 60, 0.1);
             color: #D97706;
         }
 
         .portfolio-title {
-            font-size: 2.5rem;
-            font-weight: 800;
+            font-size: 2rem;
+            font-weight: 700;
             color: var(--dark-color);
-            margin-bottom: 1rem;
+            margin-bottom: 0.75rem;
             font-family: 'Poppins', sans-serif;
+            line-height: 1.2;
         }
 
         .portfolio-stats {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            padding: 1.5rem 0;
+            gap: 1.25rem;
+            padding: 1.25rem 0;
             border-top: 1px solid var(--gray-200);
             border-bottom: 1px solid var(--gray-200);
-            margin: 2rem 0;
+            margin: 1.25rem 0;
         }
 
         .stat-box {
@@ -381,15 +372,16 @@
 
         .stat-label {
             color: var(--gray-600);
-            font-size: 0.9rem;
-            margin-bottom: 0.5rem;
+            font-size: 0.75rem;
+            margin-bottom: 0.25rem;
+            text-transform: uppercase;
+            font-weight: 600;
         }
 
         .stat-value {
-            font-size: 2rem;
-            font-weight: 800;
+            font-size: 1.6rem;
+            font-weight: 700;
             color: var(--primary-color);
-            font-family: 'Poppins', sans-serif;
         }
 
         /* Content Card */
@@ -397,25 +389,25 @@
             background: white;
             border: 1px solid var(--gray-200);
             border-radius: 12px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            transition: all 0.3s ease;
+            padding: 1.5rem;
+            margin-bottom: 1.75rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
         }
 
         .content-card-header {
-            font-size: 1.3rem;
+            font-size: 1rem;
             font-weight: 700;
             color: var(--dark-color);
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             display: flex;
             align-items: center;
-            gap: 0.75rem;
+            gap: 0.5rem;
             font-family: 'Poppins', sans-serif;
         }
 
         .content-card-header i {
             color: var(--primary-color);
-            font-size: 1.4rem;
+            font-size: 1rem;
         }
 
         /* Responsive */
@@ -448,8 +440,8 @@
         <!-- Portfolio Header -->
         <div class="portfolio-header fade-in">
             <div class="portfolio-image-container">
-                @if($portfolio->image_url)
-                    <img src="{{ $portfolio->image_url }}" alt="{{ $portfolio->title }}">
+                @if($portfolio->image)
+                    <img src="{{ $portfolio->image }}" alt="{{ $portfolio->title }}">
                 @else
                     <div style="width: 100%; height: 100%; background: linear-gradient(135deg, rgba(37, 99, 235, 0.15), rgba(59, 130, 246, 0.1)); display: flex; align-items: center; justify-content: center;">
                         <i class="fas fa-image" style="font-size: 4rem; color: rgba(37, 99, 235, 0.2);"></i>
@@ -532,17 +524,17 @@
                 <!-- Edit/Delete for Owner -->
                 @auth
                     @if(Auth::id() === $portfolio->user_id)
-                        <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--gray-200); display: flex; gap: 0.75rem; flex-wrap: wrap;">
-                            <a href="{{ route('portfolio.settings', $portfolio) }}" class="btn btn-secondary btn-sm">
+                        <div style="margin-top: 0.875rem; padding-top: 0.875rem; border-top: 1px solid var(--gray-200); display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                            <a href="{{ route('portfolio.settings', $portfolio) }}" class="btn btn-sm" style="background: var(--gray-200); color: var(--dark-color); font-size: 0.85rem;">
                                 <i class="fas fa-cog"></i> Pengaturan
                             </a>
-                            <a href="{{ route('portfolio.edit', $portfolio) }}" class="btn btn-secondary btn-sm">
+                            <a href="{{ route('portfolio.edit', $portfolio) }}" class="btn btn-sm" style="background: var(--gray-200); color: var(--dark-color); font-size: 0.85rem;">
                                 <i class="fas fa-edit"></i> Edit
                             </a>
                             <form method="POST" action="{{ route('portfolio.destroy', $portfolio) }}" style="display: inline;">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-secondary btn-sm" onclick="return confirm('Hapus portfolio ini?')">
+                                <button type="submit" class="btn btn-sm" style="background: #FEE2E2; color: #DC2626; font-size: 0.85rem;" onclick="return confirm('Hapus portfolio?')">
                                     <i class="fas fa-trash"></i> Hapus
                                 </button>
                             </form>
@@ -558,20 +550,20 @@
                 <!-- Description -->
                 <div class="content-card">
                     <div class="content-card-header">
-                        <i class="fas fa-align-left"></i> Deskripsi Proyek
+                        <i class="fas fa-align-left"></i> Tentang
                     </div>
-                    <p style="white-space: pre-wrap; margin-bottom: 0; line-height: 1.8; color: var(--gray-700);">{{ $portfolio->description }}</p>
+                    <p style="white-space: pre-wrap; margin-bottom: 0; line-height: 1.6; color: var(--gray-700); font-size: 0.95rem;">{{ $portfolio->description }}</p>
                 </div>
 
                 <!-- Technologies -->
                 @if($portfolio->technologies)
                     <div class="content-card">
                         <div class="content-card-header">
-                            <i class="fas fa-code"></i> Teknologi yang Digunakan
+                            <i class="fas fa-code"></i> Teknologi
                         </div>
-                        <div style="display: flex; flex-wrap: wrap; gap: 0.75rem;">
+                        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
                             @foreach(explode(',', $portfolio->technologies) as $tech)
-                                <span style="background: rgba(37, 99, 235, 0.08); color: var(--primary-color); padding: 0.5rem 1rem; border-radius: 8px; font-size: 0.9rem; font-weight: 500;">
+                                <span style="background: rgba(37, 99, 235, 0.08); color: var(--primary-color); padding: 0.4rem 0.8rem; border-radius: 6px; font-size: 0.85rem; font-weight: 500;">
                                     {{ trim($tech) }}
                                 </span>
                             @endforeach
@@ -579,73 +571,70 @@
                     </div>
                 @endif
 
-                <!-- Comments Section -->
-                <div class="content-card">
-                    <div class="content-card-header">
-                        <i class="fas fa-comments"></i> Komentar ({{ $portfolio->comments_count }})
-                    </div>
-
-                    @auth
-                        <!-- Add Comment Form -->
-                        <form method="POST" action="{{ route('comment.add', $portfolio) }}" class="mb-4">
-                            @csrf
-                            <div class="mb-3">
-                                <label for="comment" class="form-label" style="font-weight: 600; margin-bottom: 0.75rem;">Tambah Komentar</label>
-                                <textarea 
-                                    name="comment" 
-                                    id="comment"
-                                    class="form-control @error('comment') is-invalid @enderror"
-                                    rows="3"
-                                    placeholder="Berikan feedback atau pujian..."
-                                    required
-                                    style="border-radius: 10px; border: 1.5px solid var(--gray-300); font-family: 'Inter', sans-serif;"></textarea>
-                                @error('comment')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
-                            </div>
-                            <button type="submit" class="btn btn-primary">
-                                <i class="fas fa-comment-dots"></i> Kirim Komentar
-                            </button>
-                        </form>
-                    @else
-                        <div style="background: rgba(6, 182, 212, 0.05); border: 1px solid rgba(6, 182, 212, 0.2); padding: 1rem; border-radius: 10px; margin-bottom: 2rem;">
-                            <i class="fas fa-info-circle" style="color: var(--info-color); margin-right: 0.5rem;"></i>
-                            <a href="{{ route('login') }}" style="color: var(--primary-color); font-weight: 600;">Login</a> untuk memberikan komentar
+                <!-- Comments Section - Hidden for Creators -->
+                @if(!Auth::check() || Auth::user()->user_type !== 'individual')
+                    <div class="content-card">
+                        <div class="content-card-header">
+                            <i class="fas fa-comments"></i> Komentar ({{ $portfolio->comments_count }})
                         </div>
-                    @endauth
 
-                    <!-- Comments List -->
-                    @if($portfolio->comments->count() > 0)
-                        <div class="chat-messages">
-                            @foreach($portfolio->comments->sortByDesc('created_at') as $comment)
-                                <div style="padding: 1.25rem; background: var(--gray-50); border-radius: 12px; border: 1px solid var(--gray-200);">
-                                    <div style="display: flex; gap: 1rem;">
-                                        <div style="width: 44px; height: 44px; border-radius: 10px; background: linear-gradient(135deg, rgba(37, 99, 235, 0.2), rgba(59, 130, 246, 0.15)); display: flex; align-items: center; justify-content: center; color: var(--primary-color); font-weight: 700; flex-shrink: 0;">
-                                            {{ strtoupper(substr($comment->user->name, 0, 1)) }}
-                                        </div>
-                                        <div style="flex: 1;">
-                                            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.5rem;">
-                                                <div>
-                                                    <strong style="color: var(--dark-color); display: block;">{{ $comment->user->name }}</strong>
-                                                    <small style="color: var(--gray-600);">@{{ $comment->user->username ?? 'user' . $comment->user->id }}</small>
-                                                </div>
-                                                <small style="color: var(--gray-500); white-space: nowrap;">
-                                                    {{ $comment->created_at->diffForHumans() }}
-                                                </small>
+                        @auth
+                            <!-- Add Comment Form -->
+                            <form method="POST" action="{{ route('comment.add', $portfolio) }}" class="mb-4">
+                                @csrf
+                                <div class="mb-3">
+                                    <textarea 
+                                        name="comment" 
+                                        id="comment"
+                                        class="form-control @error('comment') is-invalid @enderror"
+                                        rows="3"
+                                        placeholder="Berikan feedback..."
+                                        required
+                                        style="border-radius: 8px; border: 1px solid var(--gray-300); font-size: 0.95rem;"></textarea>
+                                    @error('comment')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-sm">
+                                    <i class="fas fa-send"></i> Kirim
+                                </button>
+                            </form>
+                        @else
+                            <div style="background: rgba(6, 182, 212, 0.05); border: 1px solid rgba(6, 182, 212, 0.2); padding: 0.875rem; border-radius: 8px; margin-bottom: 1.5rem; font-size: 0.9rem;">
+                                <a href="{{ route('login') }}" style="color: var(--primary-color); font-weight: 600;">Login</a> untuk berkomentar
+                            </div>
+                        @endauth
+
+                        <!-- Comments List -->
+                        @if($portfolio->comments->count() > 0)
+                            <div style="display: flex; flex-direction: column; gap: 0.875rem;">
+                                @foreach($portfolio->comments->sortByDesc('created_at') as $comment)
+                                    <div style="padding: 0.875rem; background: var(--gray-50); border-radius: 8px; border: 1px solid var(--gray-200);">
+                                        <div style="display: flex; gap: 0.75rem;">
+                                            <div style="width: 36px; height: 36px; border-radius: 6px; background: linear-gradient(135deg, rgba(37, 99, 235, 0.2), rgba(59, 130, 246, 0.15)); display: flex; align-items: center; justify-content: center; color: var(--primary-color); font-weight: 700; flex-shrink: 0; font-size: 0.85rem;">
+                                                {{ strtoupper(substr($comment->user->name, 0, 1)) }}
                                             </div>
-                                            <p style="margin-bottom: 0; color: var(--gray-700); line-height: 1.6;">{{ $comment->comment }}</p>
+                                            <div style="flex: 1; min-width: 0;">
+                                                <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 0.5rem; margin-bottom: 0.25rem;">
+                                                    <strong style="color: var(--dark-color); font-size: 0.9rem;">{{ $comment->user->name }}</strong>
+                                                    <small style="color: var(--gray-500); font-size: 0.75rem; white-space: nowrap;">
+                                                        {{ $comment->created_at->diffForHumans() }}
+                                                    </small>
+                                                </div>
+                                                <p style="margin-bottom: 0; color: var(--gray-700); line-height: 1.4; font-size: 0.9rem;">{{ $comment->comment }}</p>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            @endforeach
-                        </div>
-                    @else
-                        <div style="text-align: center; padding: 2rem; color: var(--gray-500);">
-                            <i class="fas fa-inbox" style="font-size: 2rem; color: var(--gray-300); display: block; margin-bottom: 0.75rem;"></i>
-                            Belum ada komentar. Jadilah yang pertama!
-                        </div>
-                    @endif
-                </div>
+                                @endforeach
+                            </div>
+                        @else
+                            <div style="text-align: center; padding: 1.5rem; color: var(--gray-500); font-size: 0.9rem;">
+                                <i class="fas fa-inbox" style="font-size: 1.5rem; color: var(--gray-300); display: block; margin-bottom: 0.5rem;"></i>
+                                Belum ada komentar
+                            </div>
+                        @endif
+                    </div>
+                @endif
             </div>
 
             <!-- Sidebar -->
@@ -658,14 +647,12 @@
                         </div>
                         <div class="creator-info-section">
                             <div class="creator-name">{{ $portfolio->user->name }}</div>
-                            <div class="creator-username">@{{ $portfolio->user->username ?? 'user' . $portfolio->user->id }}</div>
                             @if($portfolio->user->bio)
                                 <div class="creator-bio">{{ $portfolio->user->bio }}</div>
                             @endif
-                            <div>
+                            <div style="margin-bottom: 1rem;">
                                 <span class="creator-role-badge">
-                                    <i class="fas fa-user-circle" style="margin-right: 0.3rem;"></i>
-                                    {{ ucfirst($portfolio->user->user_type) }}
+                                    {{ $portfolio->user->user_type === 'individual' ? '👤 Kreator' : '🏢 Perusahaan' }}
                                 </span>
                             </div>
                             <div class="creator-actions">
@@ -673,15 +660,17 @@
                                     <i class="fas fa-user"></i> Lihat Profil
                                 </a>
                                 @auth
-                                    @if(Auth::id() !== $portfolio->user_id)
+                                    @if(Auth::id() !== $portfolio->user_id && Auth::user()->user_type !== 'individual')
                                         <button class="btn btn-secondary btn-sm" onclick="openChatModal({{ $portfolio->user->id }}, '{{ $portfolio->user->name }}')">
                                             <i class="fas fa-comments"></i> Chat
                                         </button>
                                     @endif
                                 @else
-                                    <a href="{{ route('login') }}" class="btn btn-secondary btn-sm">
-                                        <i class="fas fa-comments"></i> Chat
-                                    </a>
+                                    @if($portfolio->user->user_type !== 'individual')
+                                        <a href="{{ route('login') }}" class="btn btn-secondary btn-sm">
+                                            <i class="fas fa-comments"></i> Chat
+                                        </a>
+                                    @endif
                                 @endauth
                             </div>
                         </div>
@@ -699,20 +688,20 @@
                             <p style="margin-top: 0.5rem; margin-bottom: 0; color: var(--dark-color); font-weight: 500;">{{ $portfolio->created_at->format('d M Y H:i') }}</p>
                         </div>
                         <div>
-                            <small style="color: var(--gray-600); font-weight: 600; text-transform: uppercase; font-size: 0.8rem;">Terakhir Diupdate</small>
-                            <p style="margin-top: 0.5rem; margin-bottom: 0; color: var(--dark-color); font-weight: 500;">{{ $portfolio->updated_at->format('d M Y H:i') }}</p>
+                            <small style="color: var(--gray-600); font-weight: 600; text-transform: uppercase; font-size: 0.75rem;">Update</small>
+                            <p style="margin-top: 0.3rem; margin-bottom: 0; color: var(--dark-color); font-weight: 500; font-size: 0.9rem;">{{ $portfolio->updated_at->format('d M Y') }}</p>
                         </div>
                         <div>
-                            <small style="color: var(--gray-600); font-weight: 600; text-transform: uppercase; font-size: 0.8rem;">Kategori</small>
-                            <p style="margin-top: 0.5rem; margin-bottom: 0; color: var(--dark-color); font-weight: 500;">{{ ucfirst(str_replace('_', ' ', $portfolio->category)) }}</p>
+                            <small style="color: var(--gray-600); font-weight: 600; text-transform: uppercase; font-size: 0.75rem;">Kategori</small>
+                            <p style="margin-top: 0.3rem; margin-bottom: 0; color: var(--dark-color); font-weight: 500; font-size: 0.9rem;">{{ ucfirst(str_replace('_', ' ', $portfolio->category)) }}</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- Related Portfolios -->
-                <div class="content-card" style="margin-top: 2rem;">
+                <div class="content-card">
                     <div class="content-card-header">
-                        <i class="fas fa-link"></i> Portfolio Lainnya
+                        <i class="fas fa-link"></i> Lainnya
                     </div>
                     @php
                         $relatedPortfolios = $portfolio->user->portfolios()
@@ -723,18 +712,17 @@
                     @endphp
 
                     @if($relatedPortfolios->count() > 0)
-                        <div style="display: flex; flex-direction: column; gap: 1rem;">
+                        <div style="display: flex; flex-direction: column; gap: 0.75rem;">
                             @foreach($relatedPortfolios as $related)
-                                <a href="{{ route('portfolio.show', $related) }}" style="display: block; padding: 1rem; background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: 10px; text-decoration: none; color: inherit; transition: all 0.3s ease;" onmouseover="this.style.background='rgba(37, 99, 235, 0.05)'; this.style.borderColor='rgba(37, 99, 235, 0.3)';" onmouseout="this.style.background='var(--gray-50)'; this.style.borderColor='var(--gray-200)';">
-                                    <h6 style="margin: 0 0 0.5rem 0; font-weight: 700; color: var(--dark-color);">{{ Str::limit($related->title, 40) }}</h6>
-                                    <small style="color: var(--gray-600);"><i class="fas fa-eye" style="margin-right: 0.3rem;"></i> {{ $related->views }} dilihat</small>
+                                <a href="{{ route('portfolio.show', $related) }}" style="display: block; padding: 0.75rem; background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: 8px; text-decoration: none; color: inherit; transition: all 0.2s ease;" onmouseover="this.style.background='rgba(37, 99, 235, 0.05)'; this.style.borderColor='rgba(37, 99, 235, 0.3)';" onmouseout="this.style.background='var(--gray-50)'; this.style.borderColor='var(--gray-200)';">
+                                    <h6 style="margin: 0 0 0.3rem 0; font-weight: 600; color: var(--dark-color); font-size: 0.9rem;">{{ Str::limit($related->title, 40) }}</h6>
+                                    <small style="color: var(--gray-600); font-size: 0.8rem;"><i class="fas fa-eye" style="margin-right: 0.2rem;"></i> {{ $related->views }}</small>
                                 </a>
                             @endforeach
                         </div>
                     @else
-                        <p style="text-align: center; padding: 2rem; margin-bottom: 0; color: var(--gray-500);">
-                            <i class="fas fa-inbox" style="display: block; font-size: 1.5rem; color: var(--gray-300); margin-bottom: 0.5rem;"></i>
-                            Tidak ada portfolio lain
+                        <p style="text-align: center; padding: 1.5rem; margin-bottom: 0; color: var(--gray-500); font-size: 0.9rem;">
+                            Tidak ada
                         </p>
                     @endif
                 </div>
